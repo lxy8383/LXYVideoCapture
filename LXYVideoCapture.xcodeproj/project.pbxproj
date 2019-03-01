@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */; };
+		502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEE9F2228CDAA0030ACF9 /* ViewController.m */; };
+		502FEEA32228CDAA0030ACF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 502FEEA12228CDAA0030ACF9 /* Main.storyboard */; };
+		502FEEA52228CDAC0030ACF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 502FEEA42228CDAC0030ACF9 /* Assets.xcassets */; };
+		502FEEA82228CDAC0030ACF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 502FEEA62228CDAC0030ACF9 /* LaunchScreen.storyboard */; };
+		502FEEAB2228CDAC0030ACF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEAA2228CDAC0030ACF9 /* main.m */; };
+		502FEEB52228CDAC0030ACF9 /* LXYVideoCaptureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEB42228CDAC0030ACF9 /* LXYVideoCaptureTests.m */; };
+		502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		502FEEB12228CDAC0030ACF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 502FEE902228CDAA0030ACF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 502FEE972228CDAA0030ACF9;
+			remoteInfo = LXYVideoCapture;
+		};
+		502FEEBC2228CDAC0030ACF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 502FEE902228CDAA0030ACF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 502FEE972228CDAA0030ACF9;
+			remoteInfo = LXYVideoCapture;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		502FEE982228CDAA0030ACF9 /* LXYVideoCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXYVideoCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		502FEE9B2228CDAA0030ACF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		502FEE9E2228CDAA0030ACF9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		502FEE9F2228CDAA0030ACF9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		502FEEA22228CDAA0030ACF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		502FEEA42228CDAC0030ACF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		502FEEA72228CDAC0030ACF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		502FEEA92228CDAC0030ACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		502FEEAA2228CDAC0030ACF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		502FEEB02228CDAC0030ACF9 /* LXYVideoCaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXYVideoCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		502FEEB42228CDAC0030ACF9 /* LXYVideoCaptureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXYVideoCaptureTests.m; sourceTree = "<group>"; };
+		502FEEB62228CDAC0030ACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		502FEEBB2228CDAC0030ACF9 /* LXYVideoCaptureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXYVideoCaptureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXYVideoCaptureUITests.m; sourceTree = "<group>"; };
+		502FEEC12228CDAC0030ACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		502FEE952228CDAA0030ACF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEAD2228CDAC0030ACF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEB82228CDAC0030ACF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		502FEE8F2228CDAA0030ACF9 = {
+			isa = PBXGroup;
+			children = (
+				502FEE9A2228CDAA0030ACF9 /* LXYVideoCapture */,
+				502FEEB32228CDAC0030ACF9 /* LXYVideoCaptureTests */,
+				502FEEBE2228CDAC0030ACF9 /* LXYVideoCaptureUITests */,
+				502FEE992228CDAA0030ACF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		502FEE992228CDAA0030ACF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				502FEE982228CDAA0030ACF9 /* LXYVideoCapture.app */,
+				502FEEB02228CDAC0030ACF9 /* LXYVideoCaptureTests.xctest */,
+				502FEEBB2228CDAC0030ACF9 /* LXYVideoCaptureUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		502FEE9A2228CDAA0030ACF9 /* LXYVideoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				502FEE9B2228CDAA0030ACF9 /* AppDelegate.h */,
+				502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */,
+				502FEE9E2228CDAA0030ACF9 /* ViewController.h */,
+				502FEE9F2228CDAA0030ACF9 /* ViewController.m */,
+				502FEEA12228CDAA0030ACF9 /* Main.storyboard */,
+				502FEEA42228CDAC0030ACF9 /* Assets.xcassets */,
+				502FEEA62228CDAC0030ACF9 /* LaunchScreen.storyboard */,
+				502FEEA92228CDAC0030ACF9 /* Info.plist */,
+				502FEEAA2228CDAC0030ACF9 /* main.m */,
+			);
+			path = LXYVideoCapture;
+			sourceTree = "<group>";
+		};
+		502FEEB32228CDAC0030ACF9 /* LXYVideoCaptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				502FEEB42228CDAC0030ACF9 /* LXYVideoCaptureTests.m */,
+				502FEEB62228CDAC0030ACF9 /* Info.plist */,
+			);
+			path = LXYVideoCaptureTests;
+			sourceTree = "<group>";
+		};
+		502FEEBE2228CDAC0030ACF9 /* LXYVideoCaptureUITests */ = {
+			isa = PBXGroup;
+			children = (
+				502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */,
+				502FEEC12228CDAC0030ACF9 /* Info.plist */,
+			);
+			path = LXYVideoCaptureUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		502FEE972228CDAA0030ACF9 /* LXYVideoCapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 502FEEC42228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCapture" */;
+			buildPhases = (
+				502FEE942228CDAA0030ACF9 /* Sources */,
+				502FEE952228CDAA0030ACF9 /* Frameworks */,
+				502FEE962228CDAA0030ACF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LXYVideoCapture;
+			productName = LXYVideoCapture;
+			productReference = 502FEE982228CDAA0030ACF9 /* LXYVideoCapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+		502FEEAF2228CDAC0030ACF9 /* LXYVideoCaptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 502FEEC72228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCaptureTests" */;
+			buildPhases = (
+				502FEEAC2228CDAC0030ACF9 /* Sources */,
+				502FEEAD2228CDAC0030ACF9 /* Frameworks */,
+				502FEEAE2228CDAC0030ACF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				502FEEB22228CDAC0030ACF9 /* PBXTargetDependency */,
+			);
+			name = LXYVideoCaptureTests;
+			productName = LXYVideoCaptureTests;
+			productReference = 502FEEB02228CDAC0030ACF9 /* LXYVideoCaptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		502FEEBA2228CDAC0030ACF9 /* LXYVideoCaptureUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 502FEECA2228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCaptureUITests" */;
+			buildPhases = (
+				502FEEB72228CDAC0030ACF9 /* Sources */,
+				502FEEB82228CDAC0030ACF9 /* Frameworks */,
+				502FEEB92228CDAC0030ACF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				502FEEBD2228CDAC0030ACF9 /* PBXTargetDependency */,
+			);
+			name = LXYVideoCaptureUITests;
+			productName = LXYVideoCaptureUITests;
+			productReference = 502FEEBB2228CDAC0030ACF9 /* LXYVideoCaptureUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		502FEE902228CDAA0030ACF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = liuxy;
+				TargetAttributes = {
+					502FEE972228CDAA0030ACF9 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					502FEEAF2228CDAC0030ACF9 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 502FEE972228CDAA0030ACF9;
+					};
+					502FEEBA2228CDAC0030ACF9 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 502FEE972228CDAA0030ACF9;
+					};
+				};
+			};
+			buildConfigurationList = 502FEE932228CDAA0030ACF9 /* Build configuration list for PBXProject "LXYVideoCapture" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 502FEE8F2228CDAA0030ACF9;
+			productRefGroup = 502FEE992228CDAA0030ACF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				502FEE972228CDAA0030ACF9 /* LXYVideoCapture */,
+				502FEEAF2228CDAC0030ACF9 /* LXYVideoCaptureTests */,
+				502FEEBA2228CDAC0030ACF9 /* LXYVideoCaptureUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		502FEE962228CDAA0030ACF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502FEEA82228CDAC0030ACF9 /* LaunchScreen.storyboard in Resources */,
+				502FEEA52228CDAC0030ACF9 /* Assets.xcassets in Resources */,
+				502FEEA32228CDAA0030ACF9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEAE2228CDAC0030ACF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEB92228CDAC0030ACF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		502FEE942228CDAA0030ACF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */,
+				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
+				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEAC2228CDAC0030ACF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502FEEB52228CDAC0030ACF9 /* LXYVideoCaptureTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		502FEEB72228CDAC0030ACF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		502FEEB22228CDAC0030ACF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 502FEE972228CDAA0030ACF9 /* LXYVideoCapture */;
+			targetProxy = 502FEEB12228CDAC0030ACF9 /* PBXContainerItemProxy */;
+		};
+		502FEEBD2228CDAC0030ACF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 502FEE972228CDAA0030ACF9 /* LXYVideoCapture */;
+			targetProxy = 502FEEBC2228CDAC0030ACF9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		502FEEA12228CDAA0030ACF9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				502FEEA22228CDAA0030ACF9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		502FEEA62228CDAC0030ACF9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				502FEEA72228CDAC0030ACF9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		502FEEC22228CDAC0030ACF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		502FEEC32228CDAC0030ACF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		502FEEC52228CDAC0030ACF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCapture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		502FEEC62228CDAC0030ACF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCapture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		502FEEC82228CDAC0030ACF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCaptureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LXYVideoCapture.app/LXYVideoCapture";
+			};
+			name = Debug;
+		};
+		502FEEC92228CDAC0030ACF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCaptureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LXYVideoCapture.app/LXYVideoCapture";
+			};
+			name = Release;
+		};
+		502FEECB2228CDAC0030ACF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCaptureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCaptureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LXYVideoCapture;
+			};
+			name = Debug;
+		};
+		502FEECC2228CDAC0030ACF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F939S9UT9X;
+				INFOPLIST_FILE = LXYVideoCaptureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCaptureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LXYVideoCapture;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		502FEE932228CDAA0030ACF9 /* Build configuration list for PBXProject "LXYVideoCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502FEEC22228CDAC0030ACF9 /* Debug */,
+				502FEEC32228CDAC0030ACF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		502FEEC42228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502FEEC52228CDAC0030ACF9 /* Debug */,
+				502FEEC62228CDAC0030ACF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		502FEEC72228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCaptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502FEEC82228CDAC0030ACF9 /* Debug */,
+				502FEEC92228CDAC0030ACF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		502FEECA2228CDAC0030ACF9 /* Build configuration list for PBXNativeTarget "LXYVideoCaptureUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502FEECB2228CDAC0030ACF9 /* Debug */,
+				502FEECC2228CDAC0030ACF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 502FEE902228CDAA0030ACF9 /* Project object */;
+}
