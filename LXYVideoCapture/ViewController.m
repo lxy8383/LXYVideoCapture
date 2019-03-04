@@ -1,154 +1,188 @@
 //
 //  ViewController.m
-//  LXYVideoCapture
+//  LXYCapture
 //
-//  Created by liuxy on 2019/3/1.
-//  Copyright © 2019年 liuxy. All rights reserved.
+//  Created by liu on 2019/3/2.
+//  Copyright © 2019年 liu. All rights reserved.
 //
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
-@interface ViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface ViewController ()
 {
-    BOOL isUsingFrontFacingCamera;
+    AVCaptureSession *_captureSession;
     
-    AVCaptureVideoDataOutput * videoDataOutput;
+    AVCaptureDevice *_videoDevice;
+    
+    AVCaptureDeviceInput *_videoInput;
+    
+    AVCaptureDeviceInput *_audioInput;
+    
+    AVCaptureMovieFileOutput *_movieOutput;
+    
+    AVCaptureConnection *_captureConnection;
+    
+    AVCaptureDevice *_audioDevice;
+    
+    AVCaptureVideoPreviewLayer *_captureVideoPreviewLayer;
 }
-// 设备输入
-@property (nonatomic, strong) AVCaptureDeviceInput *captureDeviceInput;
-// 设备输出
-@property (nonatomic, strong) AVCaptureVideoDataOutput *captureDeviceOutput;
-// session
-@property (nonatomic, strong) AVCaptureSession *captureSession;
-// AVCaptureSession用来建立和维护AVCaptureInput和AVCaptureOutput之间的连接的。
-@property (nonatomic, strong) AVCaptureConnection *captureConnection;
-
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
-
-@property (nonatomic, assign) BOOL isCapturing;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
-//    [self catchCameras];
-    
-    
-    UIButton *captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    captureButton.backgroundColor = [UIColor yellowColor];
-    captureButton.frame = CGRectMake(100, 400, 50, 50);
-    [captureButton addTarget:self action:@selector(doCaptureAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:captureButton];
+    [self getAuthorization];
 }
-- (void)doCaptureAction:(UIButton *)sender
+- (void)getAuthorization
 {
-//    BOOL startCapture = [self startCapture];
+    /*
+     AVAuthorizationStatusNoteDetermined = 0,  //未进行授权选择
+     AVAuthorizationStatusRestricted,           // 未授权 ， 且用户无法更新， 入家长控制情况下
+     AVAuthorizationStatusDenied,               // 用户拒绝app使用
+     AVAuthorizationStatusAuthorized,          // 已授权，可使用
+     */
     
-//    NSLog(@" startCapture :%d",startCapture);
+    // 此处获取摄像头权限
+    switch ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo]) {
+        case AVAuthorizationStatusDenied:{
+            NSLog(@"权限被拒绝");
+            //            [self setUpAVCaptureInfo];
+        }
+            break;
+        case AVAuthorizationStatusAuthorized:{
+            NSLog(@"授权摄像头使用成功");
+            [self setUpAVCaptureInfo];
+        }
+            break;
+        case AVAuthorizationStatusNotDetermined:{
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if(granted){
+                    [self setUpAVCaptureInfo];
+                    return ;
+                }else{
+                    return;
+                    
+                }
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
-//- (void)catchCameras
-//{
-//    //初始化session
-//    self.captureSession = [[AVCaptureSession alloc]init];
-//    [self.captureSession beginConfiguration];
-//    //不使用使用的实例， 避免被异常挂断
-//    self.captureSession.usesApplicationAudioSession = NO;
-//
-//    // 获取所有摄像头
-//    NSArray * cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-//
-//    // 获取前置摄像头
-//    NSArray *captureDeviceArray = [cameras filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"position == %d", AVCaptureDevicePositionFront]];
-//    if(!captureDeviceArray.count){
-//        printf("获取前置摄像头失败");
-//        return;
-//    }
-//
-//    // 转化为输入设备
-//    AVCaptureDevice *camera = captureDeviceArray.firstObject;
-//    NSError *errorMessage = nil;
-//
-//    self.captureDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&errorMessage];
-//    if(errorMessage){
-//        printf(" AVcaptureDevice 转 AVCaptureDeviceInput 失败");
-//        return;
-//    }
-//    AVCaptureInputPort *videoPort = self.captureDeviceInput.ports[0];
-//    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-//    AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&errorMessage];
-//    AVCaptureInputPort *audioPort = audioInput.ports[0];\
-//    NSArray<AVCaptureInputPort *> *inputPorts = @[videoPort, audioPort];
-//    //设置视频输出
-//    self.captureDeviceOutput = [[AVCaptureVideoDataOutput alloc]init];
-//
-//    // 设置视频数据格式
-//    NSDictionary *videoSetting = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange], kCVPixelBufferPixelFormatTypeKey, nil];
-//    [self.captureDeviceOutput setVideoSettings:videoSetting];
-//
-//    // 设置输出代理， 串行队列和数据回调
-//    dispatch_queue_t outputQueue = dispatch_queue_create("ACVideoCaptureOutputQueue", DISPATCH_QUEUE_SERIAL);
-//    [self.captureDeviceOutput setSampleBufferDelegate:self queue:outputQueue];
-//
-//    // 丢弃延迟的帧
-//    self.captureDeviceOutput.alwaysDiscardsLateVideoFrames = YES;
-//
-//    // 添加输入设备到会话
-//    if([self.captureSession canAddInput:self.captureDeviceInput]){
-//        [self.captureSession addInput:self.captureDeviceInput];
-//    }
-//
-//    // 添加输出设备到会话
-//    if([self.captureSession canAddOutput:self.captureDeviceOutput]){
-//        [self.captureSession addOutput:self.captureDeviceOutput];
-//    }
-//
-//    // 设置分辨率
-//    if([self.captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]){
-//        self.captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
-//    }
-//
-//    // 获取连接并设置视频方向为竖屏方向
-//    self.captureConnection = [self.captureDeviceOutput connectionWithMediaType:AVMediaTypeVideo];
-//    self.captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
-//    AVCaptureConnection *connection = [AVCaptureConnection connectionWithInputPorts:inputPorts output:self.captureDeviceOutput];
-//    //设置是否为镜像 ，  前置摄像头采集到数据本来就是翻转的，这里设置为镜像把画面转回来
-//    if(camera.position == AVCaptureDevicePositionFront && self.captureConnection.supportsVideoMirroring){
-//        self.captureConnection.videoMirrored = YES;
-//    }
-//
-//    // 获取预览layer 并设置视频方向 ，注意self.videopreview.connection 跟self.captureConnection 不是同一个对象,要分开设置
-//    self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
-//    self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
-//    self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    NSLog(@"--> : %@",NSStringFromCGRect(self.view.bounds) );
-//    self.videoPreviewLayer.frame = self.view.bounds;
-//    self.videoPreviewLayer.backgroundColor = (__bridge CGColorRef _Nullable)([UIColor redColor]);
-////    [self.view.layer insertSublayer:self.videoPreviewLayer atIndex:0];
-//    [self.view.layer addSublayer:self.videoPreviewLayer];
-//}
-
-
-
-- (BOOL)startCapture
+- (void)setUpAVCaptureInfo
 {
-    if(self.isCapturing){
-        self.isCapturing = NO;
+    [self addSession];
+    
+    [_captureSession beginConfiguration];
+    
+    [self addVideo];
+    
+    [self addAudio];
+    
+    // 添加预览层
+    [self addPlaylayer];
+    
+    [_captureSession commitConfiguration];
+    
+    [_captureSession startRunning];
+    
+    
+}
+
+- (void)addSession
+{
+    _captureSession = [[AVCaptureSession alloc]init];
+    if([_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]){
+        [_captureSession setSessionPreset:AVCaptureSessionPreset1280x720];
+    }
+}
+
+
+- (void)addVideo
+{
+    NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    
+    for(AVCaptureDevice *camera in cameras){
+        if(camera.position == AVCaptureDevicePositionFront){
+            _videoDevice = camera;
+        }
     }
     
-    // 判断摄像头权限
-    AVAuthorizationStatus videoAuthStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if(videoAuthStatus != AVAuthorizationStatusAuthorized){
-        return NO;
-    }
+    [self addVideoInput];
     
-    [self.captureSession startRunning];
-    self.isCapturing = YES;
-    return YES;
+    [self addMovieOutPut];
     
 }
+
+- (void)addVideoInput
+{
+    NSError *videoError;
+    //视频输入对象
+    //根据输入设备初始化输入对象，用户获取输入数据
+    _videoInput = [[AVCaptureDeviceInput alloc]initWithDevice:_videoDevice error:&videoError];
+    if(videoError){
+        NSLog(@"取得摄像头设备出错");
+        return;
+    }
+    
+    // 将视频输入对象添加到会话
+    if([_captureSession canAddInput:_videoInput]){
+        [_captureSession addInput:_videoInput];
+    }
+}
+
+- (void)addMovieOutPut
+{
+    //拍摄视频输出对象
+    _movieOutput = [[AVCaptureMovieFileOutput alloc]init];
+    if([_captureSession canAddOutput:_movieOutput]){
+        [_captureSession addOutput:_movieOutput];
+        
+        _captureConnection = [_movieOutput connectionWithMediaType:AVMediaTypeVideo];
+        
+        //设置视频旋转方向
+        if([_captureConnection isVideoOrientationSupported]){
+            [_captureConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+        }
+        
+        //视频稳定设置
+        if([_captureConnection isVideoStabilizationSupported]){
+            _captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+        }
+        _captureConnection.videoScaleAndCropFactor = _captureConnection.videoMaxScaleAndCropFactor;
+    }
+}
+
+- (void)addAudio
+{
+    NSError *audioError;
+    // 添加一个音频设备
+    _audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    // 音频输入对象
+    _audioInput = [[AVCaptureDeviceInput alloc]initWithDevice:_audioDevice error:&audioError];
+    
+    if(audioError){
+        NSLog(@"获取音频设备出错");
+    }
+    
+    // 将音频输入对象添加到会话
+    if([_captureSession canAddInput:_audioInput]){
+        [_captureSession addInput:_audioInput];
+    }
+}
+
+- (void)addPlaylayer
+{
+    _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:_captureSession];
+    _captureVideoPreviewLayer.frame = self.view.frame;
+    _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [self.view.layer addSublayer:_captureVideoPreviewLayer];
+}
+
 @end
