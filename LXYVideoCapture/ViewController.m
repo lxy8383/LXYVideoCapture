@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
-@interface ViewController ()
+@interface ViewController () <PlayControlViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     AVCaptureSession *_captureSession;
     
@@ -18,20 +18,26 @@
     
     AVCaptureDeviceInput *_audioInput;
     
-    AVCaptureMovieFileOutput *_movieOutput;
+    AVCaptureVideoDataOutput *_movieOutput;
     
     AVCaptureConnection *_captureConnection;
     
     AVCaptureDevice *_audioDevice;
     
     AVCaptureVideoPreviewLayer *_captureVideoPreviewLayer;
+    
+    BOOL _startCapture;
 }
+
+// 播控层
+@property (nonatomic, strong) PlayControlView  * playView;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     [self getAuthorization];
@@ -77,6 +83,10 @@
 
 - (void)setUpAVCaptureInfo
 {
+    [self.view addSubview:self.playView];
+    self.playView.frame = self.view.frame;
+    self.playView.backgroundColor = [UIColor clearColor];
+    
     [self addSession];
     
     [_captureSession beginConfiguration];
@@ -90,9 +100,7 @@
     
     [_captureSession commitConfiguration];
     
-    [_captureSession startRunning];
-    
-    
+
 }
 
 - (void)addSession
@@ -140,12 +148,18 @@
 - (void)addMovieOutPut
 {
     //拍摄视频输出对象
-    _movieOutput = [[AVCaptureMovieFileOutput alloc]init];
+    _movieOutput = [[AVCaptureVideoDataOutput alloc] init];
+    
+    NSDictionary *videoSetting = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange], kCVPixelBufferPixelFormatTypeKey, nil];
+    [_movieOutput setVideoSettings:videoSetting];
+    [_movieOutput setSampleBufferDelegate:self queue:dispatch_queue_create("ACVideoCaptureOutputQueue", DISPATCH_QUEUE_SERIAL)];
+    _movieOutput.alwaysDiscardsLateVideoFrames = YES;
+    
     if([_captureSession canAddOutput:_movieOutput]){
         [_captureSession addOutput:_movieOutput];
         
         _captureConnection = [_movieOutput connectionWithMediaType:AVMediaTypeVideo];
-        
+
         //设置视频旋转方向
         if([_captureConnection isVideoOrientationSupported]){
             [_captureConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
@@ -185,4 +199,42 @@
     [self.view.layer addSublayer:_captureVideoPreviewLayer];
 }
 
+
+#pragma mark -
+/**
+ 摄像头采集的数据回调
+ @param output 输出设备
+ @param sampleBuffer 帧缓存数据，描述当前帧信息
+ @param connection 连接
+ */
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    NSLog(@"输出 output：%@",output);
+    
+    //采集过来的数据
+    NSLog(@"信息buffer：%@",sampleBuffer);
+}
+
+#pragma mark - PlayControlDelegate
+- (void)startCapture
+{
+    if(!_startCapture){
+        // 开始拍摄
+        _startCapture = YES;
+        [_captureSession startRunning];
+    }else{
+        // 停止拍摄
+        _startCapture = NO;
+        [_captureSession stopRunning];
+    }
+}
+#pragma mark - lazy
+- (PlayControlView *)playView
+{
+    if(!_playView){
+        _playView = [[PlayControlView alloc]init];
+        _playView.delegate = self;
+    }
+    return _playView;
+}
 @end

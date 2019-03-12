@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PlayControlView.h"
 @interface ViewController : UIViewController
 
 

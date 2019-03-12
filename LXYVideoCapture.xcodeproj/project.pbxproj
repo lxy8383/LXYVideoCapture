@@ -15,6 +15,7 @@
 		502FEEAB2228CDAC0030ACF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEAA2228CDAC0030ACF9 /* main.m */; };
 		502FEEB52228CDAC0030ACF9 /* LXYVideoCaptureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEB42228CDAC0030ACF9 /* LXYVideoCaptureTests.m */; };
 		502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */; };
+		5083440022374C3300F2FE12 /* PlayControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508343FF22374C3300F2FE12 /* PlayControlView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		502FEEBB2228CDAC0030ACF9 /* LXYVideoCaptureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXYVideoCaptureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXYVideoCaptureUITests.m; sourceTree = "<group>"; };
 		502FEEC12228CDAC0030ACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508343FE22374C3300F2FE12 /* PlayControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayControlView.h; sourceTree = "<group>"; };
+		508343FF22374C3300F2FE12 /* PlayControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayControlView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				502FEEA62228CDAC0030ACF9 /* LaunchScreen.storyboard */,
 				502FEEA92228CDAC0030ACF9 /* Info.plist */,
 				502FEEAA2228CDAC0030ACF9 /* main.m */,
+				508343FE22374C3300F2FE12 /* PlayControlView.h */,
+				508343FF22374C3300F2FE12 /* PlayControlView.m */,
 			);
 			path = LXYVideoCapture;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			files = (
 				502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */,
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
+				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,
 				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
