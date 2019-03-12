@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PlayControlView.h"
+#import "LXY264Encoder.h"
+
 @interface ViewController : UIViewController
 
 

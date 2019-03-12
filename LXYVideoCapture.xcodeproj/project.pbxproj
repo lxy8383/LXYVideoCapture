@@ -16,6 +16,7 @@
 		502FEEB52228CDAC0030ACF9 /* LXYVideoCaptureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEB42228CDAC0030ACF9 /* LXYVideoCaptureTests.m */; };
 		502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */; };
 		5083440022374C3300F2FE12 /* PlayControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508343FF22374C3300F2FE12 /* PlayControlView.m */; };
+		508344032237816200F2FE12 /* LXY264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 508344022237816200F2FE12 /* LXY264Encoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		502FEEC12228CDAC0030ACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508343FE22374C3300F2FE12 /* PlayControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayControlView.h; sourceTree = "<group>"; };
 		508343FF22374C3300F2FE12 /* PlayControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayControlView.m; sourceTree = "<group>"; };
+		508344012237816200F2FE12 /* LXY264Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXY264Encoder.h; sourceTree = "<group>"; };
+		508344022237816200F2FE12 /* LXY264Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXY264Encoder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				502FEEAA2228CDAC0030ACF9 /* main.m */,
 				508343FE22374C3300F2FE12 /* PlayControlView.h */,
 				508343FF22374C3300F2FE12 /* PlayControlView.m */,
+				508344012237816200F2FE12 /* LXY264Encoder.h */,
+				508344022237816200F2FE12 /* LXY264Encoder.m */,
 			);
 			path = LXYVideoCapture;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
 				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,
 				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,
+				508344032237816200F2FE12 /* LXY264Encoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

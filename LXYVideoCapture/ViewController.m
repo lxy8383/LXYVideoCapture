@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <CoreMedia/CoreMedia.h>
 @interface ViewController () <PlayControlViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     AVCaptureSession *_captureSession;
@@ -32,6 +33,7 @@
 // 播控层
 @property (nonatomic, strong) PlayControlView  * playView;
 
+@property (nonatomic, strong) LXY264Encoder *encoder;
 @end
 
 @implementation ViewController
@@ -213,7 +215,9 @@
     
     //采集过来的数据
     NSLog(@"信息buffer：%@",sampleBuffer);
+    [self.encoder encodeSampleBuffer:sampleBuffer];
 }
+
 
 #pragma mark - PlayControlDelegate
 - (void)startCapture
@@ -236,5 +240,12 @@
         _playView.delegate = self;
     }
     return _playView;
+}
+- (LXY264Encoder *)encoder
+{
+    if(!_encoder){
+        _encoder = [[LXY264Encoder alloc]init];
+    }
+    return _encoder;
 }
 @end
