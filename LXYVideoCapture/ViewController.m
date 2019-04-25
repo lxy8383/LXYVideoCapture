@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CaptureControllerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
 @interface ViewController () <PlayControlViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -102,7 +103,8 @@
     
     [_captureSession commitConfiguration];
     
-
+//    [_captureSession startRunning];
+    
 }
 
 - (void)addSession

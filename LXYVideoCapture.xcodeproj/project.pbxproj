@@ -17,6 +17,7 @@
 		502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */; };
 		5083440022374C3300F2FE12 /* PlayControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508343FF22374C3300F2FE12 /* PlayControlView.m */; };
 		508344032237816200F2FE12 /* LXY264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 508344022237816200F2FE12 /* LXY264Encoder.m */; };
+		5A4A28932271BD9100B38EFC /* CaptureControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A28912271BD9000B38EFC /* CaptureControllerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		508343FF22374C3300F2FE12 /* PlayControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayControlView.m; sourceTree = "<group>"; };
 		508344012237816200F2FE12 /* LXY264Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXY264Encoder.h; sourceTree = "<group>"; };
 		508344022237816200F2FE12 /* LXY264Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXY264Encoder.m; sourceTree = "<group>"; };
+		5A4A28912271BD9000B38EFC /* CaptureControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureControllerView.m; sourceTree = "<group>"; };
+		5A4A28922271BD9100B38EFC /* CaptureControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureControllerView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 		502FEE9A2228CDAA0030ACF9 /* LXYVideoCapture */ = {
 			isa = PBXGroup;
 			children = (
+				5A4A28902271BD6600B38EFC /* View */,
 				502FEE9B2228CDAA0030ACF9 /* AppDelegate.h */,
 				502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */,
 				502FEE9E2228CDAA0030ACF9 /* ViewController.h */,
@@ -140,6 +144,15 @@
 				502FEEC12228CDAC0030ACF9 /* Info.plist */,
 			);
 			path = LXYVideoCaptureUITests;
+			sourceTree = "<group>";
+		};
+		5A4A28902271BD6600B38EFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A4A28922271BD9100B38EFC /* CaptureControllerView.h */,
+				5A4A28912271BD9000B38EFC /* CaptureControllerView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */,
+				5A4A28932271BD9100B38EFC /* CaptureControllerView.m in Sources */,
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
 				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,
 				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,
