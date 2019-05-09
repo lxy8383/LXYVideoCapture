@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PlayControlViewDelegate <NSObject>
 
 //开始拍摄
-- (void)startCapture;
+- (void)startCapture:(BOOL)isCapture;
 
 @end
 
@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) id <PlayControlViewDelegate> delegate;
 
 @property (nonatomic, strong) UIButton * captureButton;
-
 
 
 @end
