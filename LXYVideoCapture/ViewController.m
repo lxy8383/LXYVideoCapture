@@ -53,6 +53,15 @@
         [self.shortVideo pauseCapture];
     }
 }
+
+- (void)closeCapture{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)switchLens{
+    
+    [self.shortVideo captureSwitchLens];
+}
 #pragma mark - lazy
 - (XYCaptureShortVideoTool *)shortVideo
 {

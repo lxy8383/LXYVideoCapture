@@ -153,6 +153,48 @@
     [self.videoFileOutput stopRecording];
 }
 
+
+/**
+ 切换镜头
+ */
+- (void)captureSwitchLens
+{
+        AVCaptureDevicePosition currentPosition = self.videoInput.device.position;
+        AVCaptureDevicePosition toPosition;
+        if (currentPosition == AVCaptureDevicePositionUnspecified ||
+            currentPosition == AVCaptureDevicePositionFront) {
+            toPosition = AVCaptureDevicePositionBack;
+        } else {
+            toPosition = AVCaptureDevicePositionFront;
+        }
+        
+        AVCaptureDevice *toCapturDevice = [self cameraDeviceWithPosition:toPosition];
+        if (!toCapturDevice) {
+            NSLog(@"获取要切换的设备失败");
+            return;
+        }
+        
+        NSError *error = nil;
+        AVCaptureDeviceInput *toVideoDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:toCapturDevice error:&error];
+        if (error) {
+            NSLog(@"获取要切换的设备输入失败");
+            return;
+        }
+        
+        //改变会话配置
+        [self.captureSession beginConfiguration];
+        
+        [self.captureSession removeInput:self.videoInput];
+        if ([self.captureSession canAddInput:toVideoDeviceInput]) {
+            [self.captureSession addInput:toVideoDeviceInput];
+            
+            self.videoInput = toVideoDeviceInput;
+        }
+        //提交会话配置
+        [self.captureSession commitConfiguration];
+    
+}
+
 - (void)insertView:(UIView *)blowView
 {
     // 视频拍摄层在最底下
@@ -160,6 +202,25 @@
     [blowView.layer insertSublayer:self.captureVideoPreviewLayer atIndex:0];
 }
 
+
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition) position {
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == position) {
+            return device;
+        }
+    }
+    return nil;
+}
+
+
+- (AVCaptureDevice *)frontCamera {
+    return [self cameraWithPosition:AVCaptureDevicePositionFront];
+}
+
+- (AVCaptureDevice *)backCamera {
+    return [self cameraWithPosition:AVCaptureDevicePositionBack];
+}
 
 #pragma mark - lazy
 - (AVCaptureSession *)captureSession
@@ -223,5 +284,14 @@
     return _captureVideoPreviewLayer;
 }
 
-
+/**取得指定位置的摄像头*/
+- (AVCaptureDevice *)cameraDeviceWithPosition:(AVCaptureDevicePosition )position{
+    NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *camera in cameras) {
+        if ([camera position] == position) {
+            return camera;
+        }
+    }
+    return nil;
+}
 @end

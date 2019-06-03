@@ -30,6 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stopCapture;
 
 
+/**
+ 切换前后镜头
+ */
+- (void)captureSwitchLens;
+
+
 - (void)insertView:(UIView *)blowView;
 
 @end

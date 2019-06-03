@@ -18,6 +18,7 @@
 		5083440022374C3300F2FE12 /* PlayControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508343FF22374C3300F2FE12 /* PlayControlView.m */; };
 		508344032237816200F2FE12 /* LXY264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 508344022237816200F2FE12 /* LXY264Encoder.m */; };
 		5A4A291A2283124800B38EFC /* XYCaptureShortVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */; };
+		5AB7D4C422A4C39F004CAE9F /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7D4C322A4C39F004CAE9F /* RootController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		508344022237816200F2FE12 /* LXY264Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXY264Encoder.m; sourceTree = "<group>"; };
 		5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCaptureShortVideoTool.m; sourceTree = "<group>"; };
 		5A4A29192283124800B38EFC /* XYCaptureShortVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCaptureShortVideoTool.h; sourceTree = "<group>"; };
+		5AB7D4C222A4C39F004CAE9F /* RootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
+		5AB7D4C322A4C39F004CAE9F /* RootController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,7 @@
 		502FEE9A2228CDAA0030ACF9 /* LXYVideoCapture */ = {
 			isa = PBXGroup;
 			children = (
+				5AB7D4C122A4C25A004CAE9F /* Tool */,
 				5A4A29172283124800B38EFC /* ShortVideoCapture */,
 				5A4A28902271BD6600B38EFC /* View */,
 				502FEE9B2228CDAA0030ACF9 /* AppDelegate.h */,
@@ -123,6 +127,8 @@
 				502FEEAA2228CDAC0030ACF9 /* main.m */,
 				508344012237816200F2FE12 /* LXY264Encoder.h */,
 				508344022237816200F2FE12 /* LXY264Encoder.m */,
+				5AB7D4C222A4C39F004CAE9F /* RootController.h */,
+				5AB7D4C322A4C39F004CAE9F /* RootController.m */,
 			);
 			path = LXYVideoCapture;
 			sourceTree = "<group>";
@@ -161,6 +167,13 @@
 				5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */,
 			);
 			path = ShortVideoCapture;
+			sourceTree = "<group>";
+		};
+		5AB7D4C122A4C25A004CAE9F /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */,
+				5AB7D4C422A4C39F004CAE9F /* RootController.m in Sources */,
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
 				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,
 				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,

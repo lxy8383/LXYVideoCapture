@@ -15,6 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 //开始拍摄
 - (void)startCapture:(BOOL)isCapture;
 
+/**
+ 关闭拍摄
+ */
+- (void)closeCapture;
+
+/**
+ 切换摄像头
+ */
+- (void)switchLens;
+
 @end
 
 
@@ -22,8 +32,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) id <PlayControlViewDelegate> delegate;
 
+
+/**
+ 拍摄按钮
+ */
 @property (nonatomic, strong) UIButton * captureButton;
 
+/**
+ 关闭按钮
+ */
+@property (nonatomic, strong) UIButton * closeButton;
+
+
+/**
+ 切换镜头
+ */
+@property (nonatomic, strong) UIButton * switchLens;
 
 @end
 

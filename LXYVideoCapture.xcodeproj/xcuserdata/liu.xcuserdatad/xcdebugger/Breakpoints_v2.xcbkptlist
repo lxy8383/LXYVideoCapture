@@ -57,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LXYVideoCapture/ViewController.m"
-            timestampString = "579061847.5458471"
+            filePath = "LXYVideoCapture/ShortVideoCapture/XYCaptureShortVideoTool.m"
+            timestampString = "581239814.556523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-startCapture:"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-captureSwitchLens"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LXYVideoCapture/ShortVideoCapture/XYCaptureShortVideoTool.m"
+            timestampString = "581239814.556599"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-captureSwitchLens"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
