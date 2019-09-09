@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "XYCaptureShortVideoTool.h"
+#import "XYRealTimeVideoTool.h"
 
 
 // 视频拍摄
@@ -17,7 +18,10 @@
     BOOL _startCapture;
 }
 
-@property (nonatomic, strong) XYCaptureShortVideoTool *shortVideo;
+//@property (nonatomic, strong) XYCaptureShortVideoTool *shortVideo;
+
+//视频拍摄
+@property (nonatomic, strong) XYRealTimeVideoTool *shortVideo;
 // 播控层
 @property (nonatomic, strong) PlayControlView  * playView;
 
@@ -50,7 +54,7 @@
         [self.shortVideo startCapture];
     }else{
         // 停止拍摄
-        [self.shortVideo pauseCapture];
+//        [self.shortVideo pauseCapture];
     }
 }
 
@@ -60,13 +64,13 @@
 }
 - (void)switchLens{
     
-    [self.shortVideo captureSwitchLens];
+//    [self.shortVideo captureSwitchLens];
 }
 #pragma mark - lazy
-- (XYCaptureShortVideoTool *)shortVideo
+- (XYRealTimeVideoTool *)shortVideo
 {
     if(!_shortVideo){
-        _shortVideo = [[XYCaptureShortVideoTool alloc]init];
+        _shortVideo = [[XYRealTimeVideoTool alloc]init];
     }
     return _shortVideo;
 }
