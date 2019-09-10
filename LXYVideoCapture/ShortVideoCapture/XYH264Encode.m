@@ -7,7 +7,7 @@
 //
 
 #import "XYH264Encode.h"
-#import <VideoToolbox/VideoToolbox.h>
+
 
 @interface XYH264Encode()
 {

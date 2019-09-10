@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <VideoToolbox/VideoToolbox.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 初始化编码器
 - (void)initVideoTool264Encode;
+
+// 开始编码
+- (void)encode:(CMSampleBufferRef)sampleBuffer;
 
 @end
 
