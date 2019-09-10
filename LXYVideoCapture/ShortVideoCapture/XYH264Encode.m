@@ -44,7 +44,10 @@
     VTSessionSetProperty(self.compressionSessionRef, kVTCompressionPropertyKey_ExpectedFrameRate, (__bridge CFTypeRef _Nullable)(@(30)));
     
     //2.3 设置比特率（码率） bit/s 单位时间的数据量
-    VTSessionSetProperty(self.compressionSessionRef, kVTCompressionPropertyKey_AverageBitRate, (__bridge CFTypeRef _Nullable)(@(1500000)));
+    int bitRate = [self getResolution];
+    CFNumberRef bitRateRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRate);
+    VTSessionSetProperty(_compressionSessionRef, kVTCompressionPropertyKey_AverageBitRate, bitRateRef);
+    
     CFArrayRef dataLimits = (__bridge CFArrayRef)(@[@(1500000 / 8), @1]);
     VTSessionSetProperty(self.compressionSessionRef, kVTCompressionPropertyKey_DataRateLimits, dataLimits);
     // 2.4 设置GOP的大小
@@ -139,6 +142,23 @@ void encodeOutputCallback(void * CM_NULLABLE outputCallbackRefCon, void * CM_NUL
         [self.fileHandle writeData:byteHeader];
         [self.fileHandle writeData:data];
     }
+}
+
+// 获取屏幕分辨率
+- (int)getResolution
+{
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    
+    CGSize screenSize = screenRect.size;
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    CGFloat screenX = screenSize.width * scale;
+    
+    CGFloat screenY = screenSize.height * scale;
+    
+    return screenX * screenY;
+    
 }
 
 
