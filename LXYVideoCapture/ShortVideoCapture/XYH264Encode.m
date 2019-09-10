@@ -22,6 +22,35 @@
 
 @implementation XYH264Encode
 
+static XYH264Encode *encode = nil;
+- (instancetype)init
+{
+    self = [super init];
+    if(self){
+        
+        [self setupFileHandle];
+        
+        [self initVideoTool264Encode];
+        
+    }
+    return self;
+}
+- (void)setupFileHandle
+{
+    // 1, 获取沙盒路劲
+    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"test.h264"];
+    // 如果原来有文件，则删除
+    [[NSFileManager defaultManager] removeItemAtPath:file error:nil];
+    [[NSFileManager defaultManager] createFileAtPath:file contents:nil attributes:nil];
+    
+    // 3. 创建对象
+    NSError *error;
+    self.fileHandle = [NSFileHandle fileHandleForWritingAtPath:file];
+    if(error){
+        NSLog(@"创建对象失败%@",error);
+    }
+}
+
 - (void)initVideoTool264Encode
 {
     
@@ -191,4 +220,16 @@ void encodeOutputCallback(void * CM_NULLABLE outputCallbackRefCon, void * CM_NUL
     }
     NSLog(@"H264: VTCompressionSessionEncodeFrame Success");
 }
+
+// 停止编码
+- (void)endEncode
+{
+    VTCompressionSessionCompleteFrames(self.compressionSessionRef, kCMTimeInvalid);
+    VTCompressionSessionInvalidate(self.compressionSessionRef);
+    CFRelease(self.compressionSessionRef);
+    self.compressionSessionRef = NULL;
+    [self.fileHandle closeFile];
+    self.fileHandle = nil;
+}
+
 @end

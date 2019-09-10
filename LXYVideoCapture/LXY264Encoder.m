@@ -245,6 +245,7 @@ static void bbCompressionSessionCallback(void * CM_NULLABLE outputCallbackRefCon
     }
 }
 
+//停止编码
 - (void)endEncode
 {
     VTCompressionSessionCompleteFrames(self.compressionSessionRef, kCMTimeInvalid);

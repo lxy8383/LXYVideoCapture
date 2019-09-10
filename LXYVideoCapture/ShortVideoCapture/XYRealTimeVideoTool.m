@@ -9,6 +9,7 @@
 #import "XYRealTimeVideoTool.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import "XYH264Encode.h"
 
 
 @interface XYRealTimeVideoTool() <AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 
+@property (nonatomic, strong) XYH264Encode *encode;
 @end
 
 @implementation XYRealTimeVideoTool
@@ -111,18 +113,23 @@
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     NSLog(@"OutputSampleBuffer %@",sampleBuffer);
+    [self.encode encode:sampleBuffer];
 }
 
 - (void)startCapture
 {
     //开始采集
     [self.captureSession startRunning];
+    
 }
 
 
 - (void)stopCapture
 {
     [self.captureSession stopRunning];
+    
+    [self.encode endEncode];
+    
 }
 - (void)insertView:(UIView *)blowView
 {
@@ -165,6 +172,13 @@
         _captureVideoPreviewLayer.backgroundColor = [UIColor grayColor].CGColor;
     }
     return _captureVideoPreviewLayer;
+}
+- (XYH264Encode *)encode
+{
+    if(!_encode){
+        _encode = [[XYH264Encode alloc]init];
+    }
+    return _encode;
 }
 
 @end

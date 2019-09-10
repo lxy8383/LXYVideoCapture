@@ -52,9 +52,10 @@
     if(isCapture){
         // 开始拍摄
         [self.shortVideo startCapture];
+        
     }else{
         // 停止拍摄
-//        [self.shortVideo pauseCapture];
+        [self.shortVideo stopCapture];
     }
 }
 
