@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5025C66923263F4C00C1B2C1 /* XYRealTimeVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5025C66823263F4C00C1B2C1 /* XYRealTimeVideoTool.m */; };
+		5025C66C23274D3E00C1B2C1 /* XYH264Encode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5025C66B23274D3E00C1B2C1 /* XYH264Encode.m */; };
 		502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */; };
 		502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEE9F2228CDAA0030ACF9 /* ViewController.m */; };
 		502FEEA32228CDAA0030ACF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 502FEEA12228CDAA0030ACF9 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		5025C66723263F4C00C1B2C1 /* XYRealTimeVideoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYRealTimeVideoTool.h; sourceTree = "<group>"; };
 		5025C66823263F4C00C1B2C1 /* XYRealTimeVideoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYRealTimeVideoTool.m; sourceTree = "<group>"; };
+		5025C66A23274D3E00C1B2C1 /* XYH264Encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XYH264Encode.h; path = LXYVideoCapture/ShortVideoCapture/XYH264Encode.h; sourceTree = SOURCE_ROOT; };
+		5025C66B23274D3E00C1B2C1 /* XYH264Encode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XYH264Encode.m; path = LXYVideoCapture/ShortVideoCapture/XYH264Encode.m; sourceTree = SOURCE_ROOT; };
 		502FEE982228CDAA0030ACF9 /* LXYVideoCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXYVideoCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		502FEE9B2228CDAA0030ACF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		502FEE9C2228CDAA0030ACF9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 		5AB7D4C122A4C25A004CAE9F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				5025C66A23274D3E00C1B2C1 /* XYH264Encode.h */,
+				5025C66B23274D3E00C1B2C1 /* XYH264Encode.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			files = (
 				502FEEA02228CDAA0030ACF9 /* ViewController.m in Sources */,
 				5025C66923263F4C00C1B2C1 /* XYRealTimeVideoTool.m in Sources */,
+				5025C66C23274D3E00C1B2C1 /* XYH264Encode.m in Sources */,
 				5AB7D4C422A4C39F004CAE9F /* RootController.m in Sources */,
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
 				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,

@@ -91,7 +91,7 @@
     [self.captureDeviceOutput setAlwaysDiscardsLateVideoFrames:YES];
     
     // 设置YUV420p 输出
-    [self.captureDeviceOutput setVideoSettings:@{(id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_420YpCbCr8PlanarFullRange)}];
+    [self.captureDeviceOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
     
     [self.captureDeviceOutput setSampleBufferDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
     // 添加输入设备
@@ -110,11 +110,7 @@
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    
-}
-- (void)captureOutput:(AVCaptureOutput *)output didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection API_AVAILABLE(ios(6.0))
-{
-    
+    NSLog(@"OutputSampleBuffer %@",sampleBuffer);
 }
 
 - (void)startCapture
@@ -166,6 +162,7 @@
         _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
         //设置比例为铺满全屏
         _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        _captureVideoPreviewLayer.backgroundColor = [UIColor grayColor].CGColor;
     }
     return _captureVideoPreviewLayer;
 }
