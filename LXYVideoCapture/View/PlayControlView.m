@@ -28,6 +28,9 @@
     
     [self addSubview:self.switchLens];
     self.switchLens.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 80, 30, 32, 32);
+    
+    [self addSubview:self.decodeButton];
+    self.decodeButton.frame = CGRectMake(100, 200, 45, 30);
 }
 
 - (void)PlayViewAction:(UIButton *)sender
@@ -54,7 +57,13 @@
             if([self.delegate respondsToSelector:@selector(closeCapture)]){
                 [self.delegate switchLens];
             }
-        }break;
+        } break;
+        case 100004:{
+            if([self.delegate respondsToSelector:@selector(decodeH264:)]){
+                [self.delegate decodeH264:sender];
+            }
+        }
+            break;
 
             
         default:
@@ -96,6 +105,17 @@
         _switchLens.tag = 100003;
     }
     return _switchLens;
+}
+
+- (UIButton *)decodeButton
+{
+    if(!_decodeButton){
+        _decodeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_decodeButton addTarget:self action:@selector(PlayViewAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_decodeButton setTitle:@"解码" forState:UIControlStateNormal];
+        _decodeButton.tag = 100004;
+    }
+    return _decodeButton;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

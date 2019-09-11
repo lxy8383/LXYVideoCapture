@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "XYCaptureShortVideoTool.h"
 #import "XYRealTimeVideoTool.h"
+#import <AVFoundation/AVFoundation.h>
+#import "XYH264Decode.h"
 
 
 // 视频拍摄
@@ -26,6 +28,11 @@
 @property (nonatomic, strong) PlayControlView  * playView;
 
 @property (nonatomic, strong) LXY264Encoder *encoder;
+
+@property (nonatomic, strong) AVSampleBufferDisplayLayer *displayer;
+
+@property (nonatomic, strong) XYH264Decode *h264Decoder;
+
 @end
 
 @implementation ViewController
@@ -35,6 +42,11 @@
     [super viewDidLoad];
     
     [self setUpView];
+    
+    
+    self.h264Decoder = [[XYH264Decode alloc] init];
+    
+    [self setupSampleBufferDisplayLayer];
 }
 
 - (void)setUpView
@@ -57,6 +69,18 @@
         // 停止拍摄
         [self.shortVideo stopCapture];
     }
+}
+- (void)decodeH264:(UIButton *)sender
+{
+    sender.enabled = false;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.h264Decoder decodeFile:@"test" fileExt:@"h264" andAVSLayer:self.displayer completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                sender.enabled = true;
+            });
+        }];
+    });
 }
 
 - (void)closeCapture{
@@ -90,5 +114,16 @@
         _encoder = [[LXY264Encoder alloc]init];
     }
     return _encoder;
+}
+
+- (void)setupSampleBufferDisplayLayer {
+    
+    AVSampleBufferDisplayLayer *avslayer = [[AVSampleBufferDisplayLayer alloc]init];
+    avslayer.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 150, 0, 150, 200);
+    avslayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    avslayer.backgroundColor = [UIColor yellowColor].CGColor;
+    CMTimebaseSetRate(avslayer.controlTimebase, 1.0);
+    self.displayer = avslayer;
+    [self.playView.layer addSublayer:self.displayer];
 }
 @end

@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)switchLens;
 
+- (void)decodeH264:(UIButton *)sender;
+
 @end
 
 
@@ -48,6 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
  切换镜头
  */
 @property (nonatomic, strong) UIButton * switchLens;
+
+// 解码button
+@property (nonatomic, strong) UIButton *decodeButton;
+
 
 @end
 

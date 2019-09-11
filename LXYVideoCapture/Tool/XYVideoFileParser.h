@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYVideoFileParser : NSObject
 
-- (void)open:(NSString *)fileName;
+- (BOOL)open:(NSString *)fileName;
 - (XYVideoPacket *)nextPacket;
 - (void)close;
 
