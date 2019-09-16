@@ -21,6 +21,7 @@
 		502FEEC02228CDAC0030ACF9 /* LXYVideoCaptureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 502FEEBF2228CDAC0030ACF9 /* LXYVideoCaptureUITests.m */; };
 		5083440022374C3300F2FE12 /* PlayControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508343FF22374C3300F2FE12 /* PlayControlView.m */; };
 		508344032237816200F2FE12 /* LXY264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 508344022237816200F2FE12 /* LXY264Encoder.m */; };
+		50C4B5F9232F372900A9B0AB /* XYRealTimeAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C4B5F8232F372900A9B0AB /* XYRealTimeAudioTool.m */; };
 		5A4A291A2283124800B38EFC /* XYCaptureShortVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */; };
 		5AB7D4C422A4C39F004CAE9F /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7D4C322A4C39F004CAE9F /* RootController.m */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,8 @@
 		508343FF22374C3300F2FE12 /* PlayControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayControlView.m; sourceTree = "<group>"; };
 		508344012237816200F2FE12 /* LXY264Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXY264Encoder.h; sourceTree = "<group>"; };
 		508344022237816200F2FE12 /* LXY264Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXY264Encoder.m; sourceTree = "<group>"; };
+		50C4B5F7232F372900A9B0AB /* XYRealTimeAudioTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYRealTimeAudioTool.h; sourceTree = "<group>"; };
+		50C4B5F8232F372900A9B0AB /* XYRealTimeAudioTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYRealTimeAudioTool.m; sourceTree = "<group>"; };
 		5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCaptureShortVideoTool.m; sourceTree = "<group>"; };
 		5A4A29192283124800B38EFC /* XYCaptureShortVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCaptureShortVideoTool.h; sourceTree = "<group>"; };
 		5AB7D4C222A4C39F004CAE9F /* RootController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				5A4A29182283124800B38EFC /* XYCaptureShortVideoTool.m */,
 				5025C66723263F4C00C1B2C1 /* XYRealTimeVideoTool.h */,
 				5025C66823263F4C00C1B2C1 /* XYRealTimeVideoTool.m */,
+				50C4B5F7232F372900A9B0AB /* XYRealTimeAudioTool.h */,
+				50C4B5F8232F372900A9B0AB /* XYRealTimeAudioTool.m */,
 			);
 			path = ShortVideoCapture;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				5025C66923263F4C00C1B2C1 /* XYRealTimeVideoTool.m in Sources */,
 				5025C67A2328CD3E00C1B2C1 /* XYH264Encode.m in Sources */,
 				5AB7D4C422A4C39F004CAE9F /* RootController.m in Sources */,
+				50C4B5F9232F372900A9B0AB /* XYRealTimeAudioTool.m in Sources */,
 				502FEEAB2228CDAC0030ACF9 /* main.m in Sources */,
 				5083440022374C3300F2FE12 /* PlayControlView.m in Sources */,
 				502FEE9D2228CDAA0030ACF9 /* AppDelegate.m in Sources */,
@@ -507,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F939S9UT9X;
 				INFOPLIST_FILE = LXYVideoCapture/Info.plist;
@@ -517,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -525,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F939S9UT9X;
 				INFOPLIST_FILE = LXYVideoCapture/Info.plist;
@@ -535,6 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.KindLink.LXYVideoCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

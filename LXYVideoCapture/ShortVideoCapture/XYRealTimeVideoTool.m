@@ -12,17 +12,28 @@
 #import "XYH264Encode.h"
 
 
-@interface XYRealTimeVideoTool() <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface XYRealTimeVideoTool() <AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>
 // 场景
 @property (nonatomic, strong) AVCaptureSession *captureSession;
-// 输入
-@property (nonatomic, strong) AVCaptureDeviceInput *captureDeviceInput;
-// 输出
-@property (nonatomic, strong) AVCaptureVideoDataOutput *captureDeviceOutput;
+// 音频输入
+@property (nonatomic, strong) AVCaptureDeviceInput *videoInput;
+// 视频输出
+@property (nonatomic, strong) AVCaptureVideoDataOutput *videoDataOutput;
+// 音频输入
+@property (nonatomic, strong) AVCaptureDeviceInput *audioInput;
+// 音频输出
+@property (nonatomic, strong) AVCaptureAudioDataOutput *audioDataOutput;
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 
 @property (nonatomic, strong) XYH264Encode *encode;
+
+@property (nonatomic, strong) AVCaptureDevice *inputMicphone;
+
+
+
+
+
 @end
 
 @implementation XYRealTimeVideoTool
@@ -76,6 +87,9 @@
 
 - (void)addDevice
 {
+    dispatch_queue_t videoCaptureQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_queue_t audioCaptureQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
     self.captureSession = [[AVCaptureSession alloc] init];
     
     // 设置录制640 * 480
@@ -83,27 +97,48 @@
     
     AVCaptureDevice *inputCamera = [self cameraWithPostion:AVCaptureDevicePositionBack];
     
-    self.captureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:inputCamera error:nil];
+    self.videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:inputCamera error:nil];
     
-    if([self.captureSession canAddInput:self.captureDeviceInput]){
-        [self.captureSession addInput:self.captureDeviceInput];
+    if([self.captureSession canAddInput:self.videoInput]){
+        [self.captureSession addInput:self.videoInput];
     }
     
-    self.captureDeviceOutput = [[AVCaptureVideoDataOutput alloc] init];
-    [self.captureDeviceOutput setAlwaysDiscardsLateVideoFrames:YES];
+    self.videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
     
     // 设置YUV420p 输出
-    [self.captureDeviceOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+    [self.videoDataOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
     
-    [self.captureDeviceOutput setSampleBufferDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    [self.videoDataOutput setSampleBufferDelegate:self queue:videoCaptureQueue];
     // 添加输入设备
-    if([self.captureSession canAddOutput:self.captureDeviceOutput]){
-        [self.captureSession addOutput:self.captureDeviceOutput];
+    if([self.captureSession canAddOutput:self.videoDataOutput]){
+        [self.captureSession addOutput:self.videoDataOutput];
     }
     
     //建立连接
-    AVCaptureConnection *connection = [self.captureDeviceOutput connectionWithMediaType:AVMediaTypeVideo];
+    AVCaptureConnection *connection = [self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
     [connection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+    
+    
+    NSError *audioError = nil;
+    // Device for Audio
+    _inputMicphone = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    
+    _audioInput = [[AVCaptureDeviceInput alloc]initWithDevice:_inputMicphone error:&audioError];
+    if(audioError){
+        NSLog(@"micphone Error");
+    }
+    if([self.captureSession canAddInput:_audioInput]){
+        [self.captureSession addInput:_audioInput];
+    }
+    
+    //initiaze an AVCaptureAudioDataOutput instance and set capture session
+    self.audioDataOutput = [[AVCaptureAudioDataOutput alloc] init];
+    if([self.captureSession canAddOutput:self.audioDataOutput]){
+        [self.captureSession addOutput:self.audioDataOutput];
+    }
+    [self.audioDataOutput setSampleBufferDelegate:self queue:audioCaptureQueue];
+
 }
 
 
@@ -112,8 +147,12 @@
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    NSLog(@"OutputSampleBuffer %@",sampleBuffer);
-    [self.encode encode:sampleBuffer];
+    if(output == self.videoDataOutput){
+        NSLog(@"videoOutSampleBuffer %@",sampleBuffer);
+        [self.encode encode:sampleBuffer];
+    }else if(output == self.audioDataOutput){
+        NSLog(@"audioOutSampleBuffer %@",sampleBuffer);
+    }
 }
 
 - (void)startCapture
