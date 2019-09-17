@@ -10,9 +10,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
 #import "XYH264Encode.h"
+#import "AACEncoder.h"
 
 
 @interface XYRealTimeVideoTool() <AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>
+
 // 场景
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 // 音频输入
@@ -30,9 +32,9 @@
 
 @property (nonatomic, strong) AVCaptureDevice *inputMicphone;
 
+@property (nonatomic, strong) AACEncoder *aacEncoder;
 
-
-
+@property (nonatomic, strong) NSFileHandle * audioFileHandle;
 
 @end
 
@@ -81,6 +83,13 @@
     self = [super init];
     if(self){
         [self getAuthorization];
+        
+        self.aacEncoder = [[AACEncoder alloc]init];
+        
+        NSString *audioFile = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"abc.aac"];
+        [[NSFileManager defaultManager] removeItemAtPath:audioFile error:nil];
+        [[NSFileManager defaultManager] createFileAtPath:audioFile contents:nil attributes:nil];
+        self.audioFileHandle = [NSFileHandle fileHandleForWritingAtPath:audioFile];
     }
     return self;
 }
@@ -152,6 +161,10 @@
         [self.encode encode:sampleBuffer];
     }else if(output == self.audioDataOutput){
         NSLog(@"audioOutSampleBuffer %@",sampleBuffer);
+        __weak typeof(self) weakSelf = self;
+        [self.aacEncoder encodeSampleBuffer:sampleBuffer completionBlock:^(NSData * _Nonnull encodedData, NSError * _Nonnull error) {
+            [weakSelf.audioFileHandle writeData:encodedData];
+        }];
     }
 }
 
@@ -166,8 +179,10 @@
 - (void)stopCapture
 {
     [self.captureSession stopRunning];
-    
     [self.encode endEncode];
+    
+    [_audioFileHandle closeFile];
+    _audioFileHandle = NULL;
     
 }
 - (void)insertView:(UIView *)blowView

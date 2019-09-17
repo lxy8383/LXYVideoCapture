@@ -203,7 +203,7 @@ void encodeOutputCallback(void * CM_NULLABLE outputCallbackRefCon, void * CM_NUL
     // pts(presentationTimeStamp) 展示时间戳，用来解码时， 计算m每一帧时间的
     // dts(DecodeTimeStamp) 解码时间戳,决定该帧在什么时间展示
     // 第几帧
-    CMTime pts = CMTimeMake( frameNO ++ , 30);
+    CMTime pts = CMTimeMake( frameNO ++ , 1000);
     
     VTEncodeInfoFlags flags;
     OSStatus statusCode = VTCompressionSessionEncodeFrame(self.compressionSessionRef,
